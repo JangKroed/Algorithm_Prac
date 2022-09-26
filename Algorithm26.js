@@ -28,37 +28,44 @@
 console.log(solution(16));
 
 function solution(num) {
-    let count = 0;
+  let count = 0;
 
-    while (num !== 1){
-        if(num%2 === 0){
-            num = num/2
-            count++
-        } else if(num%2 !== 0){
-            num = num*3+1
-            count++
-        }
-        if(count >= 500){
-            return -1
-        }
+  while (num !== 1) {
+    if (num % 2 === 0) {
+      num = num / 2;
+      count++;
+    } else if (num % 2 !== 0) {
+      num = num * 3 + 1;
+      count++;
     }
-    return count
+    if (count >= 500) {
+      return -1;
+    }
+  }
+  return count;
 }
 
 // 다른 풀이 - for
 function collatz(num) {
-
-    for(var answer = 0;answer<500;answer++){
-      if(num%2==0){
-        num = num/2;
-      }
-      else if(num==1){
-          return answer;
-      }
-      else if(num%2==1){
-        num = (num*3)+1;
-      }
+  for (var answer = 0; answer < 500; answer++) {
+    if (num % 2 == 0) {
+      num = num / 2;
+    } else if (num == 1) {
+      return answer;
+    } else if (num % 2 == 1) {
+      num = num * 3 + 1;
     }
-    //if(answer == 500){return -1;}
-      return -1;
   }
+  //if(answer == 500){return -1;}
+  return -1;
+}
+
+// 다른 풀이 2 - while 조건문
+function collatz(num) {
+  var answer = 0;
+  while (num != 1 && answer != 500) {
+    num % 2 == 0 ? (num = num / 2) : (num = num * 3 + 1);
+    answer++;
+  }
+  return num == 1 ? answer : -1;
+}
