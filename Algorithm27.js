@@ -31,4 +31,9 @@ function solution(x) {
     return !(num%sum);
 }
 
+// 다른 풀이 2 - 분석해보자
+function solution(x) {
+    return x%eval([...x.toString()].join("+")) ? false : true;
+}
+
 // https://school.programmers.co.kr/learn/courses/30/lessons/12947
