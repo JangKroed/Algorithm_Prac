@@ -81,3 +81,5 @@ const collatzGuessCount = (num, acc) =>
     : collatzGuessCount(processCollatz(num), acc + 1);
 
 const processCollatz = (num) => (num % 2 === 0 ? num / 2 : num * 3 + 1);
+
+// https://programmers.co.kr/learn/courses/30/lessons/12943
