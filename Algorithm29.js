@@ -63,6 +63,11 @@ console.log(solution(size));
 // while문에 조건식을 달아서 값을 비교해서 앞자리가 작으면 swap
 
 
+// 다른풀이 - reduce, Math.max, Math.min
 
+function solution(sizes) {
+    const [hor, ver] = sizes.reduce(([h, v], [a, b]) => [Math.max(h, Math.max(a, b)), Math.max(v, Math.min(a, b))], [0, 0])
+    return hor * ver;
+}
 
 // https://school.programmers.co.kr/learn/courses/30/lessons/86491
