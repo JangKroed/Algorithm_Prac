@@ -13,6 +13,9 @@ function solution(n) {
 
 console.log(solution(45))
 
-
+// 다른 풀이 - 좀더 단순화
+const solution = (n) => {
+    return parseInt([...n.toString(3)].reverse().join(""), 3);
+}
 
 // https://school.programmers.co.kr/learn/courses/30/lessons/68935
