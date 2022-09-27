@@ -42,7 +42,7 @@ let win_nums = [38, 19, 20, 40, 15, 25];
 // }
 console.log(solution(lottos, win_nums));
 
-// 자바 풀이 옮겨적기, 
+// 자바 풀이 옮겨적기,
 function solution(lottos, win_nums) {
   // 1. 당첨번호 cnt, 0은 zerocnt
   let cnt = 0;
@@ -64,6 +64,22 @@ function solution(lottos, win_nums) {
   console.log("cnt : ", Math.max(cnt), "zeroCnt : ", Math.max(zeroCnt));
   // 0일때 1이 리턴, 등수를 구하기위한 7-
   return [7 - Math.max(cnt + zeroCnt, 1), 7 - Math.max(cnt, 1)];
+}
+
+// 다른 풀이 - 가산기 사용, reduce, includes
+
+function solution(lottos = [], win_nums = []) {
+  const rank = [6, 6, 5, 4, 3, 2, 1];
+  let [max, min] = lottos.reduce(
+    ([max, min], cur) =>
+      win_nums.includes(cur)
+        ? [++max, ++min]
+        : cur === 0
+        ? [++max, min]
+        : [max, min],
+    [0, 0]
+  );
+  return [rank[max], rank[min]];
 }
 
 // https://school.programmers.co.kr/learn/courses/30/lessons/77484
