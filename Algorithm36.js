@@ -41,7 +41,8 @@ function solution(nums) {
         if (is_prime(nums[a] + nums[b] + nums[c])) answer += 1;
       }
     }
-  } return answer
+  }
+  return answer;
 }
 
 function is_prime(num) {
@@ -56,6 +57,102 @@ function is_prime(num) {
 
 console.log(solution(nums));
 // console.log(is_prime(97));
+
+// 다른 판독기
+function primecheck(n) {
+  for (var i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i == 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+// 다른 판독기 2
+function isPrime(num) {
+  // num이 소수인지 아닌지 검사.
+  let flag = true;
+  for (let i = 2; i * i <= num; i++) {
+    if (num % i == 0) {
+      flag = false;
+      break;
+    }
+  }
+  return flag;
+}
+
+// 다른 판독기 3
+function prime(num) {
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) return false;
+  }
+  // console.log(num)
+  return true;
+}
+
+// 다른 풀이
+function solution(num) {
+  // split odds and evens
+  let evens = [],
+    odds = [];
+  num.forEach((el) => {
+    if (el % 2) odds.push(el);
+    else evens.push(el);
+  });
+
+  // collect prime candidates (all primes are odd except 2)
+  // or more precisely, because 2 is a prime number
+  // all the other even numbers cannot be prime. lol.
+  // candidate 1: even + even + odd
+  // candidate 2: odd + odd + odd
+  // note keep the biggest number
+  let prime_candidates = [];
+
+  // even + even + odd
+  if (evens.length >= 2) {
+    for (let i = 0; i < evens.length - 1; i++) {
+      for (let j = i + 1; j < evens.length; j++) {
+        for (let k = 0; k < odds.length; k++) {
+          prime_candidates.push(evens[i] + evens[j] + odds[k]);
+        }
+      }
+    }
+  }
+
+  // odd+odd+odd
+  if (odds.length >= 3) {
+    for (let i = 0; i < odds.length - 2; i++) {
+      for (let j = i + 1; j < odds.length - 1; j++) {
+        for (let k = j + 1; k < odds.length; k++) {
+          prime_candidates.push(odds[i] + odds[j] + odds[k]);
+        }
+      }
+    }
+  }
+
+  prime_candidates.sort((a, b) => a - b);
+
+  const max = prime_candidates[prime_candidates.length - 1];
+  let nums = [];
+  // populate the array with trues
+  for (let i = 3; i < max + 1; i += 2) nums[i] = true;
+  // filter
+  let index = 3,
+    answer = 0;
+  while (index < nums.length) {
+    if (nums[index]) {
+      while (prime_candidates[0] < index) prime_candidates.shift();
+      while (prime_candidates[0] === index) {
+        answer++;
+        prime_candidates.shift();
+      }
+      // make false all the multiples of the index
+      for (let i = 2; i * index <= max; i++) nums[index * i] = false;
+    }
+    index++;
+  }
+  return answer;
+}
 
 // https://school.programmers.co.kr/learn/courses/30/lessons/12977
 
