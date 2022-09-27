@@ -16,8 +16,8 @@
 // 로또번호와 당첨번호를 sort((a,b)=>a-b)
 // 둘을 비교하는 문법을 써서 최대로 맞을 갯수와 최저갯수 리턴
 // 갯수별로 if, else if로 리턴
-let lottos = [44, 1, 0, 0, 31, 25];
-let win_nums = [31, 10, 45, 1, 6, 19];
+let lottos = [0, 0, 0, 0, 0, 0];
+let win_nums = [38, 19, 20, 40, 15, 25];
 
 // function solution(L, W) {
 //   let MW = L.sort((a, b) => a - b);
@@ -41,5 +41,29 @@ let win_nums = [31, 10, 45, 1, 6, 19];
 //   return result
 // }
 console.log(solution(lottos, win_nums));
+
+// 자바 풀이 옮겨적기, 
+function solution(lottos, win_nums) {
+  // 1. 당첨번호 cnt, 0은 zerocnt
+  let cnt = 0;
+  let zeroCnt = 0;
+  for (let lotto of lottos) {
+    // 2. 0의 갯수 cnt++, continue
+    if (lotto === 0) {
+      zeroCnt++;
+      continue;
+    }
+    for (let win_num of win_nums) {
+      // 3. 둘을 비교해 cnt++, 빠른진행을 위해 break.
+      if (win_num === lotto) {
+        cnt++;
+        break;
+      }
+    }
+  }
+  console.log("cnt : ", Math.max(cnt), "zeroCnt : ", Math.max(zeroCnt));
+  // 0일때 1이 리턴, 등수를 구하기위한 7-
+  return [7 - Math.max(cnt + zeroCnt, 1), 7 - Math.max(cnt, 1)];
+}
 
 // https://school.programmers.co.kr/learn/courses/30/lessons/77484
