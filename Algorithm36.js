@@ -1,6 +1,6 @@
 // 소수 만들기
 
-const { range } = require("express/lib/request");
+// const { range } = require("express/lib/request");
 
 // 주어진 숫자중 3개의 숫자를 더했을때 소수가 되는 경우의 개수를 리턴
 // 숫자들이 들어있는 배열 nums
