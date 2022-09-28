@@ -165,3 +165,21 @@ function solution(num) {
 // }
 
 // console.log(range(5))
+
+
+// 세욱님 최적화 버전 판독기
+function getPrimes(N) {
+  const primeSet = new Set([2]);
+  for (let i=3; i<=N; i+=2) {
+  primeSet.add(i);
+  }
+  
+  const maxSqrt = Math.ceil(N**0.5);
+  for (let i=3; i<=maxSqrt; i+=2) {
+  for (let j=3; i*j<=N; j+=2) {
+  primeSet.delete( i*j );
+  }
+  }
+  
+  return primeSet;
+  }
