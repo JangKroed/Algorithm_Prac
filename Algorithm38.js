@@ -85,4 +85,13 @@ function caesar(s, n) {
   return result;
 }
 
+// 다른 풀이
+function caesar(s, n) {
+  return s.replace(/([a-z])|([A-Z])/g, (c, lowerCase) => {
+    var startCode = lowerCase ? 'a'.charCodeAt(0) : 'A'.charCodeAt(0)
+    // %26은 스펠링개수보다 많아지면 앞으로 넘겨주기위함
+    return String.fromCharCode((c.charCodeAt(0) - startCode + n) % 26 + startCode)
+  })
+}
+
 // https://school.programmers.co.kr/learn/courses/30/lessons/12926
