@@ -55,18 +55,38 @@ function gcdlcm(a, b) {
 
 // return b는 최대 공약수, a*b/b는 최소공배수
 
-
 // 세준님 풀이
-function solution(n,m){
-    const result = n*m
-    let initial = 1
-    while(initial){
-        initial = n%m
-        if(initial == 0) break
-        n = m
-        m = initial
-    }
-    
+function solution(n, m) {
+  const result = n * m;
+  let initial = 1;
+  while (initial) {
+    initial = n % m;
+    if (initial == 0) break;
+    n = m;
+    m = initial;
+  }
+}
+
+// 세욱님 풀이
+function solution(n, m) {
+  const GCD = getGCD(n, m);
+  const LCM = (n * m) / GCD;
+
+  return [GCD, LCM];
+}
+
+function getGCD(A, B) {
+  while (A % B !== 0) {
+    [A, B] = [B & A, A];
+  }
+  return B;
+}
+
+// 기본형
+function getGCD(A, B) {
+  if (A >= B) return getGCD(A & B, B);
+  if (A < B) return getGCD(B, A);
+  if (A = 0) return B;
 }
 
 // https://school.programmers.co.kr/learn/courses/30/lessons/12940
