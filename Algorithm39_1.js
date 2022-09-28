@@ -15,7 +15,7 @@ function solution(new_id) {
   // 6
   if (answer.length > 15) answer = answer.substring(0, 15);
   if (answer.charAt(answer.length - 1) == ".")
-    answer = answer.replace(/^\.+|\.+$/g, "");
+    answer = answer.replace(/^\.+|\.+$/g, ""); // /[.]+
 
   // 7
   while (answer.length < 3) answer += answer.charAt(answer.length - 1);
@@ -49,3 +49,17 @@ const solution = (new_id) =>
     .match(/^.{0,14}[^.]/)[0]
     .replace(/^(.)$/, "$1$1$1")
     .replace(/^(.)(.)$/, "$1$2$2");
+
+
+// 다른 풀이 3 - 나름대로 최적화
+const solution = (new_id) => {
+  const id = new_id
+    .toLowerCase() // 1
+    .replace(/[^\w\-_.]/g, "") // 2
+    .replace(/\.+/g, ".") // 3
+    .replace(/^\.|\.$/g, "") // 4
+    .padEnd(1, "a") // 5 - or .replace(/^$/, 'a')
+    .slice(0, 15)
+    .replace(/\.$/g, ""); // 6
+  return id.padEnd(3, id[id.length - 1]); // 7
+};
