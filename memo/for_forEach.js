@@ -55,7 +55,7 @@ function main(n) {
   console.log("forEachEff: " + forEachEff / 100);
 }
 
-main(1000000);
+main(100);
 // repeat: 1000000;
 // forEff: 0.5363389998674393;
 // forEachEff: 58.38826200067997;
