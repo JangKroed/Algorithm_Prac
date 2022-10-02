@@ -166,20 +166,58 @@ function solution(num) {
 
 // console.log(range(5))
 
-
 // 세욱님 최적화 버전 판독기
 function getPrimes(N) {
   const primeSet = new Set([2]);
-  for (let i=3; i<=N; i+=2) {
-  primeSet.add(i);
+  for (let i = 3; i <= N; i += 2) {
+    primeSet.add(i);
   }
-  
-  const maxSqrt = Math.ceil(N**0.5);
-  for (let i=3; i<=maxSqrt; i+=2) {
-  for (let j=3; i*j<=N; j+=2) {
-  primeSet.delete( i*j );
+
+  const maxSqrt = Math.ceil(N ** 0.5);
+  for (let i = 3; i <= maxSqrt; i += 2) {
+    for (let j = 3; i * j <= N; j += 2) {
+      primeSet.delete(i * j);
+    }
   }
-  }
-  
+
   return primeSet;
+}
+
+// 체크 해봐야함
+// 방법1
+
+function isPrime(num) {
+  // 소수는 1과 자기 자신만으로만 나누어 떨어지는 수 임으로
+  // num > i
+  for (let i = 2; num > i; i++) {
+    if (num % i === 0) {
+      //이 부분에서 num이  다른 수로 나눠떨어진다면 소수가 아님
+      return false;
+    }
   }
+  // 소수는 1보다 큰 정수임으로
+  // 1보다 작으면 false를 리턴한다
+  return num > 1;
+}console.log(isPrime(66456131))
+
+// 방법2
+function isPrime(num) {
+  if (num <= 1) {
+    // 음수와 1은 소수가 아니다
+    return false;
+  }
+  // 2는 짝수 중 유일한 소수이다
+  if (num % 2 === 0) {
+    return num === 2 ? true : false;
+  }
+  // 이제 num이 홀수 일때 다른 수에 나눠지는지 판별한다
+  // Math.sqrt(num) 즉, √num까지 나눠 떨어지는지 검사한다
+  const sqrt = parseInt(Math.sqrt(num));
+
+  for (let divider = 3; divider <= sqrt; divider += 2) {
+    if (num % divider === 0) {
+      return false;
+    }
+  }
+  return true;
+}
