@@ -32,8 +32,11 @@ return (n+"").split("").reverse().map(v => parseInt(v));
 var arr = [];
 
 do {
+    // arr에 n나누기 10의 나머지값을 push(123이라면 3을push)
     arr.push(n%10);
+    // n을 10으로 나누고 소숫점 버린 정수 선언
     n = Math.floor(n/10);
+    // n이 0보다 작을때까지
 } while (n>0);
 
 return arr;
