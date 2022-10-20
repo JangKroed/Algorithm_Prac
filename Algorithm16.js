@@ -77,7 +77,7 @@ function solution(a, b) {
     //반환되는 값이 days 배열의 index값으로 사용되기때문에 변수명을 dayIndex라고 선언합니다. 
     const dayIndex = new Date(2016, a-1, b).getDay();
     
-    //days[dayIndex]가 2016년 a월 b일의 요일을 뜻하기 때문에 solution의 반환되는 answer     에 값을 할당 시킵니다.
+    //days[dayIndex]가 2016년 a월 b일의 요일을 뜻하기 때문에 solution의 반환되는 answer에 값을 할당 시킵니다.
     answer = days[dayIndex];
     
     return answer;
