@@ -1,0 +1,21 @@
+MAC:
+
+Source MAC address(Current Hop)
+Destination MAC address(Next Hop)
+IP(assuming IPv4):
+
+Destination IP address
+Source IP address
+IP Options(if set)
+Type-Of-Service(TOS)
+The number of hops the current packet passed, if TTL is set to 64
+TCP:
+
+Source Port
+Destination Port
+TCP-Options
+Theoretically, you can encrypt the TCP-Headers, but that is hard to implement.
+
+SSL:
+
+Hostname(if SNI is being used)
