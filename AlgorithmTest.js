@@ -11,15 +11,15 @@
 // .map(Number).reduce((a,b)=>a+b,0)
 // 까지 하면 합계 끗.
 
-// function solution(n) {
-//   return (n + "")
-//     .split("")
-//     .reverse()
-//     .map(Number)
-//     .reduce((a, b) => a + b, 0);
-// }
+function solution(n) {
+  return (n + "")
+    .split("")
+    .reverse()
+    .map(Number)
+    .reduce((a, b) => a + b, 0);
+}
 
-// console.log(solution(718253));
+console.log(solution(718253));
 
 // 2. 몇시간했더라?
 
@@ -34,19 +34,19 @@
 // 두개의 배열을 비교, for문과 if문 사용
 // 체크아웃 - 체크인 시간을 result + 체크아웃-체크인
 // 체크아웃 시간 29이상이면 +21
-// let arr1 = [9, 9, 9, 9, 7, 9, 8];
-// let arr2 = [23, 23, 30, 28, 30, 23, 23];
+let arr1 = [9, 9, 9, 9, 7, 9, 8];
+let arr2 = [23, 23, 30, 28, 30, 23, 23];
 
-// function solution(arr1, arr2) {
-//   let answer = [];
-//   for (let i = 0; i < arr1.length; i++) {
-//     if (arr2[i] >= 29) answer.push(21 - arr1[i]);
-//     else answer.push(arr2[i] - arr1[i]);
-//   }
-//   return answer.reduce((a, b) => a + b, 0);
-// }
+function solution(arr1, arr2) {
+  let answer = [];
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr2[i] >= 29) answer.push(21 - arr1[i]);
+    else answer.push(arr2[i] - arr1[i]);
+  }
+  return answer.reduce((a, b) => a + b, 0);
+}
 
-// console.log(solution(arr1, arr2));
+console.log(solution(arr1, arr2));
 
 // 3. 소수의 개수와 덧셈
 
